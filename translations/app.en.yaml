@@ -1,0 +1,7 @@
+loan:
+  amount: Loan amount
+  term: Loan term
+  fee: Loan fee
+
+calculate: Calculate
+backToCalculator: Back to calculator

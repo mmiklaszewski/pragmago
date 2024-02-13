@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <form action="{{ path('calculate') }}" method="post">
+
+        <label>
+            {{ 'loan.term' | trans({}, 'app') }}
+            <select name="term">
+                <option value="12">12</option>
+                <option value="24">24</option>
+            </select>
+        </label>
+        <br>
+
+        <label>
+            {{ 'loan.amount' | trans({}, 'app') }}
+            <input name="amount" type="number">
+        </label>
+        <br>
+        <button type="submit">{{ 'calculate' | trans({}, 'app') }}</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,7 @@
+loan:
+  amount: Kwota pożyczki
+  term: Okres pożyczki
+  fee: Koszt pożyczki
+
+calculate: Oblicz
+backToCalculator: Wróć do kalkulatora

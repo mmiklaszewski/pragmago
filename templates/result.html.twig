@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ 'loan.amount' | trans({}, 'app') }} : {{ amount }} <br>
+    {{ 'loan.term' | trans({}, 'app') }} : {{ term }} <br>
+    {{ 'loan.fee' | trans({}, 'app') }} : {{ fee }} <br>
+
+    <a href="{{ path('homepage') }}">{{ 'backToCalculator' | trans({}, 'app') }}</a>
+{% endblock %}
