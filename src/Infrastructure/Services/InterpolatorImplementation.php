@@ -10,6 +10,8 @@ use Brick\Money\Money;
 
 final class InterpolatorImplementation implements Interpolator
 {
+    private const int VALUE_TO_ROUND = 5;
+
     public function interpolate(LoanProposal $proposal, FeeStructure $structure): Money
     {
         $beforeOrEqual = null;
@@ -46,11 +48,11 @@ final class InterpolatorImplementation implements Interpolator
 
         $amountDiff = $after->amount->minus($beforeOrEqual->amount);
 
-        $amountDiff->getAmount()->toBigRational()->dividedBy(3);
-
-        $feePer5 = $amountDiff->getAmount()->toBigRational()->dividedBy(ceil($feeDiff->getAmount()->dividedBy(5)->toFloat()));
+        $feePer5 = $amountDiff->getAmount()->toBigRational()->dividedBy(
+            ceil($feeDiff->getAmount()->dividedBy(self::VALUE_TO_ROUND)->toFloat()));
         $amountToAdditionalFee = $proposal->amount() - $beforeOrEqual->amount->getAmount()->toFloat();
-        $additionalFee = ceil($amountToAdditionalFee / $feePer5->toFloat()) * 5;
+
+        $additionalFee = ceil($amountToAdditionalFee / $feePer5->toFloat()) * self::VALUE_TO_ROUND;
 
         if ($after->fee->isLessThan($beforeOrEqual->fee)) {
             $fee = $beforeOrEqual->fee->minus($additionalFee);

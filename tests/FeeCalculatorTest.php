@@ -11,7 +11,7 @@ class FeeCalculatorTest extends KernelTestCase
     /**
      * @dataProvider data
      */
-    public function testOne(int $term, float $amount, float $fee)
+    public function testFee(int $term, float $amount, float $fee)
     {
         self::bootKernel();
         $container = self::getContainer();
